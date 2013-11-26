@@ -7,7 +7,7 @@
 
 <body>
 	<%@include file="menu.jsp"%>
-	<--Cria objeto da classe TabContatos -->
+
 
 	<jsp:useBean id="dao" class="br.com.fj21.TabContatos" />
 
