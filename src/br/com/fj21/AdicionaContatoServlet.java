@@ -28,8 +28,8 @@ public class AdicionaContatoServlet extends HttpServlet {
 			dataNascimento = Calendar.getInstance();
 			dataNascimento.setTime(data);
 		} catch (java.text.ParseException e) {
-			System.out.println("Erro conversão de data");
-			return;// para execução do metodo
+			System.out.println("Erro conversÔøΩo de data");
+			return;// para execuÔøΩÔøΩo do metodo
 		}
 
 		// criando contato
@@ -49,10 +49,10 @@ public class AdicionaContatoServlet extends HttpServlet {
 
 		// imprime nome do contato
 		out.println("<html>");
-		out.println("<body>");
+		out.println("<body align=\"center\">");
 		out.println("<p> O contato " + contato.getNome()
 				+ " foi salvo corretamente<br /> ");
-		response.sendRedirect("htttp://localhost:8080/fj21-agenda/bemvindo.jsp");
+		out.println("<a href=\"http://localhost:8080/fj21-agenda/bemvindo.jsp\">Home</a>");
 		out.println("</body>");
 		out.println("</html>");
 

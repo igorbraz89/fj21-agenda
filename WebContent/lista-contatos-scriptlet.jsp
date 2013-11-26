@@ -3,10 +3,10 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@include file="topo.jsp"%>
+<c:import url="topo.jsp"/>
 
 <body>
-	<%@include file="menu.jsp"%>
+	<c:import url="menu.jsp" />
 
 
 	<jsp:useBean id="dao" class="br.com.fj21.TabContatos" />
@@ -16,16 +16,19 @@
 
 		<p>Lista de contatos Agenda Fj-21:</p>
 		<br />
-		<table border="2" cellspacing="7">
+		<table border="2" cellspacing="3">
 			<c:forEach var="contato" items="${dao.lista}">
 
 				<tr>
+
 					<td>${contato.nome}</td>
-					<td>${contato.email}</td>
+					<td><c:if test="${not empty contato.email}">
+							<a href="mailto:${contato.email}">${contato.email}</a>
+						</c:if></td>
 					<td>${contato.endereco}</td>
 					<td>${contato.dataNascimento}</td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
-	<%@include file="rodape.jsp"%>
+	<c:import url="rodape.jsp"/>
