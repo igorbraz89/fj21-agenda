@@ -28,9 +28,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 			dataNascimento = Calendar.getInstance();
 			dataNascimento.setTime(data);
 		} catch (java.text.ParseException e) {
-			System.out.println("Erro conversão de data");
 			out.println("<a href=\"http://localhost:8080/fj21-agenda/lista-contatos-scriptlet.jsp\">Visualiza lista</a>");
-			
 			return;// para execu��o do metodo
 		}
 
