@@ -16,13 +16,14 @@ body {
     }
 a:link, a:visited, a:hover, a:active { 
     color: #0000FF; 
-    text-decoration: none; 
+    text-decoration: none;
+    text-align:center;  
     }
      
 #geral { 
 	background: #fff;
     width: 760px; 
-    text-align:left; 
+    text-align:center; 
     margin: 0 auto; 
     border: 1px solid #000;
     }

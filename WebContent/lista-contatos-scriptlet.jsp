@@ -16,7 +16,8 @@
 
 		<p>Lista de contatos Agenda Fj-21:</p>
 		<br />
-		<table border="2" cellspacing="3">
+		<hr width=75% align=left>
+		<table border="0" cellspacing="2">
 			<c:forEach var="contato" items="${dao.lista}">
 
 				<tr>
@@ -30,5 +31,6 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<hr width=75% align=left>
 	</div>
 	<c:import url="rodape.jsp"/>

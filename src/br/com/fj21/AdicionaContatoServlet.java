@@ -28,7 +28,9 @@ public class AdicionaContatoServlet extends HttpServlet {
 			dataNascimento = Calendar.getInstance();
 			dataNascimento.setTime(data);
 		} catch (java.text.ParseException e) {
-			System.out.println("Erro convers�o de data");
+			System.out.println("Erro conversão de data");
+			out.println("<a href=\"http://localhost:8080/fj21-agenda/lista-contatos-scriptlet.jsp\">Visualiza lista</a>");
+			
 			return;// para execu��o do metodo
 		}
 
@@ -43,8 +45,9 @@ public class AdicionaContatoServlet extends HttpServlet {
 			salvaContato.adciona(contato);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("Erro ao tentar salvar o contato");
 			e.printStackTrace();
+			System.out.println("Erro ao tentar salvar o contato");
+			out.println("<a href=\"http://localhost:8080/fj21-agenda/lista-contatos-scriptlet.jsp\">Visualiza lista</a>");
 		}
 
 		// imprime nome do contato
@@ -52,7 +55,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 		out.println("<body align=\"center\">");
 		out.println("<p> O contato " + contato.getNome()
 				+ " foi salvo corretamente<br /> ");
-		out.println("<a href=\"http://localhost:8080/fj21-agenda/bemvindo.jsp\">Home</a>");
+		out.println("<a href=\"http://localhost:8080/fj21-agenda/lista-contatos-scriptlet.jsp\">Visualiza lista</a>");
 		out.println("</body>");
 		out.println("</html>");
 
