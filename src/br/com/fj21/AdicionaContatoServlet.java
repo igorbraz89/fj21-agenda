@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 public class AdicionaContatoServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-
+			HttpServletResponse response) throws IOException, ServletException {
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/lista-contatos-scriptlet.jsp");
+		
 		// writer
 		PrintWriter out = response.getWriter();
 		// BUSCANDO PARAMETROS
@@ -28,7 +32,8 @@ public class AdicionaContatoServlet extends HttpServlet {
 			dataNascimento = Calendar.getInstance();
 			dataNascimento.setTime(data);
 		} catch (java.text.ParseException e) {
-			out.println("<a href=\"http://localhost:8080/fj21-agenda/lista-contatos-scriptlet.jsp\">Visualiza lista</a>");
+			rd.forward(request,response);
+			
 			return;// para execu��o do metodo
 		}
 
@@ -45,17 +50,10 @@ public class AdicionaContatoServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Erro ao tentar salvar o contato");
-			out.println("<a href=\"http://localhost:8080/fj21-agenda/lista-contatos-scriptlet.jsp\">Visualiza lista</a>");
 		}
-
-		// imprime nome do contato
-		out.println("<html>");
-		out.println("<body align=\"center\">");
-		out.println("<p> O contato " + contato.getNome()
-				+ " foi salvo corretamente<br /> ");
-		out.println("<a href=\"http://localhost:8080/fj21-agenda/lista-contatos-scriptlet.jsp\">Visualiza lista</a>");
-		out.println("</body>");
-		out.println("</html>");
+		//redireciona para outra pagina
+		rd.forward(request,response);
+		
 
 	}// fim classe
 }
