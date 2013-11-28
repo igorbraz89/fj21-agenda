@@ -17,12 +17,12 @@
 		<p>Lista de contatos Agenda Fj-21:</p>
 		<br />
 		<hr width=75% align=left>
-		<table border="0" cellspacing="2">
+		<table border="0" cellspacing="3">
 			<c:forEach var="contato" items="${dao.lista}">
 
 				<tr>
-
-					<td>${contato.nome}</td>
+					<td>${contato.id} </td>
+					<td>${contato.nome} </td>
 					<td><c:if test="${not empty contato.email}">
 							<a href="mailto:${contato.email}">${contato.email}</a>
 						</c:if></td>

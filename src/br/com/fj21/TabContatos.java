@@ -12,7 +12,6 @@ public class TabContatos {
 	private Connection connection;
 
 	public TabContatos() {
-	
 
 	}
 
@@ -38,12 +37,37 @@ public class TabContatos {
 		System.out.println("Gravado!");
 
 		this.connection.close();
-		System.out.println("conex‹o encerrada");
+		System.out.println("conexï¿½o encerrada");
+	}
+
+	public void altera(Contato contato) throws SQLException {
+		this.connection = new ConnectionFactory().getConnection();
+		// cria um preparedStatement
+		
+		String sql_direto = "UPDATE agendaContatos SET nome='"
+				+ contato.getNome() + "'," + " email='" + contato.getEmail()
+				+ "'," + " endereco='" + contato.getEndereco() + "'"
+				+ ", dataNascimento='" + contato.getDataNascimento() + "'"
+				+ " WHERE Id='" + contato.getId() + "'";
+
+		System.out.println("id->>>>" + contato.getId());
+		System.out.println(sql_direto);
+		PreparedStatement stmt_insert = this.connection
+				.prepareStatement(sql_direto);
+
+		// executa
+		stmt_insert.execute();
+
+		stmt_insert.close();
+		System.out.println("Gravado!");
+
+		this.connection.close();
+		System.out.println("conexï¿½o encerrada");
 	}
 
 	public ArrayList showTabelaContatos() throws SQLException {
-		// pega a conex‹o e o Statement
-		ArrayList<Contato> contatos= new ArrayList<Contato>();
+		// pega a conexï¿½o e o Statement
+		ArrayList<Contato> contatos = new ArrayList<Contato>();
 		this.connection = new ConnectionFactory().getConnection();
 		PreparedStatement stmt_selectAllContatos = this.connection
 				.prepareStatement("select * from agendaContatos");
@@ -53,12 +77,13 @@ public class TabContatos {
 
 		// itera no ResultSet
 		while (rs_querySelect.next()) {
+			int id = Integer.parseInt(rs_querySelect.getString("Id"));
 			String nome = rs_querySelect.getString("nome");
 			String email = rs_querySelect.getString("email");
 			String endereco = rs_querySelect.getString("endereco");
 			Calendar data = Calendar.getInstance();
 			data.setTime(rs_querySelect.getDate("dataNascimento"));
-			Contato contato= new Contato(nome,email,endereco);
+			Contato contato = new Contato(id, nome, email, endereco);
 			contato.setDataNascimento(data);
 			contatos.add(contato);
 		}
@@ -74,22 +99,23 @@ public class TabContatos {
 		try {
 			List<Contato> contatos = new ArrayList<Contato>();
 			PreparedStatement stmt = this.connection
-					.prepareStatement("select nome,email,endereco,dataNascimento from agendaContatos");
+					.prepareStatement("select Id,nome,email,endereco,dataNascimento from agendaContatos");
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				// criando o objeto Contato
 				Contato contato = new Contato();
+				contato.setId(rs.getInt("Id"));
 				contato.setNome(rs.getString("nome"));
 				contato.setEmail(rs.getString("email"));
 				contato.setEndereco(rs.getString("endereco"));
 
-				// montando a data atravŽs do Calendar
+				// montando a data atravï¿½s do Calendar
 				Calendar data = Calendar.getInstance();
 				data.setTime(rs.getDate("dataNascimento"));
 				contato.setDataNascimento(data);
 
-				// adicionando o objeto ˆ lista
+				// adicionando o objeto ï¿½ lista
 				contatos.add(contato);
 			}
 			rs.close();
@@ -99,8 +125,7 @@ public class TabContatos {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
+
 	}
 
-	
-}//classe
+}// classe

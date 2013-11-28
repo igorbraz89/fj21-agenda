@@ -5,27 +5,38 @@ import java.util.Calendar;
 
 public class Contato {
 
-	
+	private int id;
 	private String nome;
 	private String email;
 	private String endereco;
 	private Calendar dataNascimento;
 
-	// métodos get e set para id, nome, email, endereço e dataNascimento
+	// mÔøΩtodos get e set para id, nome, email, endereÔøΩo e dataNascimento
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id =id;
+	}
 
 	public Date getDataNascimento() {
-	    return new Date(this.dataNascimento.getTimeInMillis());
-	    
-	  }
+		return new Date(this.dataNascimento.getTimeInMillis());
+
+	}
+
 	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public Contato(){
-		
+
+	public Contato() {
+
 	}
-	public Contato(String nome, String email, String endereco) {
-		
-		
+
+	public Contato(int id, String nome, String email, String endereco) {
+
+		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.endereco = endereco;
@@ -54,7 +65,6 @@ public class Contato {
 	public void setEndereco(String novo) {
 		this.endereco = novo;
 	}
-
 
 	public String toString() {
 		return this.nome + this.endereco;
