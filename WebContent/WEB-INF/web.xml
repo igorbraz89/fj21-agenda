@@ -55,5 +55,14 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	  <filter>
+	<filter-name>adicionaTarefas</filter-name>
+		<filter-class>fj21.tarefas.struts2.AdicionaTarefasAction</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>adicionaTarefas</filter-name>
+		<url-pattern>/adicionaTarefas</url-pattern>
+	</filter-mapping>
+	 
 </web-app>
 
