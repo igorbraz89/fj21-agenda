@@ -3,14 +3,14 @@
 <div id="coluna1">
 	<table>
 		<tr>
-			<td><a href="http://localhost:8080/agenda/bemvindo.jsp">Home - </a></td>
+			<td><a href="http://localhost:8080/fj21-agenda/bemvindo.jsp">Home - </a></td>
 			<td><a
-				href="http://localhost:8080/agenda/adiciona-contato.jsp"
-				target="centro">Novo contato - </a></td>
+				href="http://localhost:8080/fj21-agenda/adiciona-contato.jsp"
+				target="_self">Novo contato - </a></td>
 			<td><a
-				href="http://localhost:8080/agenda/altera-contato.jsp">Altera contatos - </a></td>
+				href="http://localhost:8080/fj21-agenda/altera-contato.jsp">Altera contatos - </a></td>
 			<td><a
-				href="http://localhost:8080/agenda/lista-contatos-scriptlet.jsp">Visualiza
+				href="http://localhost:8080/fj21-agenda/lista-contatos-scriptlet.jsp">Visualiza
 					contatos</a></td>
 		</tr>
 	</table>
